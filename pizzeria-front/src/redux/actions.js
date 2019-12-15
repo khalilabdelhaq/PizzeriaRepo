@@ -30,3 +30,8 @@ export function livrerCommande(id)
         }
 
 }
+export function fetchAllCommandesAction(){
+    return {
+        type: types.GET_COMMANDES_REQUEST,
+        }
+}

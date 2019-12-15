@@ -1,11 +1,13 @@
-import { createStore } from "redux";
+import { createStore,applyMiddleware} from "redux";
+import createSagaMiddleware from 'redux-saga';
 import * as types from './actionTypes';
+import mySaga from './sagas';
 
 const data =[
-  {nom :'abdelhak',
-  prenom : 'khalilo',
+  {nomClient :'abdelhak',
+  prenomClient : 'khalilo',
   adresse :'adresse',
-  typeTizza :'margaritta',
+  typePizza :'margaritta',
   taillePizza:'XL',
   saucePizza : 'sauce tomate',
   quantite : 2,
@@ -57,13 +59,20 @@ const initialState = {
         }
       }
       console.log(stateCopy.commandeToAdd);
+      case types.FETCH_DATA_SUCCESS : 
+      console.log(action.data);
+      stateCopy={
+        ...state,listCommande:action.data
+      }
       return stateCopy;
         default :
         return state;
     }
   }
   const configureStore = () =>{
-    const store = createStore(reducer);
+    const sagaMiddelware=createSagaMiddleware()
+    const store = createStore(reducer,applyMiddleware(sagaMiddelware));
+    sagaMiddelware.run(mySaga)
     return store;
 }
 export default configureStore;

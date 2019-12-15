@@ -19,4 +19,21 @@ public List<PizzaCommande> findAll() {
 	return pizzaCommandeRepo.findAll();
 }
 
+@Override
+public List<PizzaCommande> findBylivreeFalse() {
+	// TODO Auto-generated method stub
+	return pizzaCommandeRepo.findBylivreeFalse();
+}
+
+@Override
+public void livrerCommande(Long id) {
+	pizzaCommandeRepo.setPizzaCommandeById(id); 
+}
+
+@Override
+public PizzaCommande saveCommande(PizzaCommande commande) {
+	// TODO Auto-generated method stub
+	return pizzaCommandeRepo.save(commande);
+}
+
 }

@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import CommandeList from './CommandeList';
 import { connect } from "react-redux";
+import {fetchAllCommandesAction} from '../redux/actions'
 
 class CommandeTable extends Component {
   constructor(props) {
     super(props);
+  }
+  componentDidMount(){
+    this.props.fetchAllCommandes();
   }
 
   livrerCommande(){
@@ -21,8 +25,13 @@ class CommandeTable extends Component {
       );
     }
   }
+  
+  const mapDispatchToProps = dispatch => ({
+    fetchAllCommandes: () => dispatch(fetchAllCommandesAction())
+  });
+  
   const mapStateToProps =(state) => ({
     data : state.listCommande,
   });
   //cette fonction permet de connecter un composant react au store
-  export default connect(mapStateToProps)(CommandeTable);
+  export default connect(mapStateToProps,mapDispatchToProps)(CommandeTable);

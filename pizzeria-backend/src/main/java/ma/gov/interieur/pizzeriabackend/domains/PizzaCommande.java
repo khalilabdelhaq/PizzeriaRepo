@@ -1,14 +1,10 @@
 package ma.gov.interieur.pizzeriabackend.domains;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 public class PizzaCommande {
@@ -23,10 +19,8 @@ public class PizzaCommande {
 	private String taillePizza;
 	private String saucePizza;
 	private Integer quantite;
-	@Temporal(value = TemporalType.TIMESTAMP)
-	private Date dateCommande = new Date();
 	@Column(columnDefinition = "boolean default FALSE")
-	Boolean livree;
+	private Boolean livree;
 
 	public PizzaCommande() {
 		super();
