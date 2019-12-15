@@ -23,8 +23,8 @@ class StepTwo extends React.Component {
           <div className='six columns'>
             <label>Type Pizza</label>
             <select
+             name="typePizza"
              value={this.props.commande.typePizza}
-             onChange={this.props.handleInputChange}
               className='u-full-width required'
               onChange={this.props.handleInputChange} >
             <option value="Margaritta">Margaritta</option>
@@ -33,38 +33,55 @@ class StepTwo extends React.Component {
            </select>
           </div>
         </div>
-        {/*
+        
         <div className='row'>
           <div className='four columns'>
-          <label className="radio-inline"><input type="radio" name="optradio" checked />Medium</label>  
-          </div>
-          <div className='four columns'>
-          <label className="radio-inline"><input type="radio" name="optradio" /> Large</label>
-          </div>
-          <div className='four columns'>
-          <label className="radio-inline"><input type="radio" name="optradio" />XL</label>
+          <label>Taille</label>
+            <select
+             value={this.props.commande.taillePizza}
+             name="taillePizza"
+             onChange={this.props.handleInputChange}
+              className='u-full-width required'
+               >
+            <option value="Medium">Medium</option>
+            <option value="XL">XL</option>
+            <option value="Large">Large</option>
+           </select>
           </div>
         </div>
-        */}
+        
         <div className='row'>
         <div className='six columns'>
             <label>Sauce</label>
             <select
              value={this.props.commande.saucePizza}
+             name="saucePizza"
              onChange={this.props.handleInputChange}
               className='u-full-width required'
-              onChange={this.handleEmailChanged} >
+               >
             <option value="Base Crème fraîche">Base Crème fraîche</option>
             <option value="Base Sauce Tomate">Base Sauce Tomate</option>
             <option value="Mixte">Mixte</option>
            </select>
           </div>
           </div>
+          <div className='row'>
+          <div className='six columns'>
+            <label>Quantite</label>
+            <input type="number"
+              className='u-full-width'
+              placeholder='Last Name'
+              name="quantite"
+              value={this.props.commande.quantite}
+              onChange={this.props.handleInputChange}
+            />
+          </div>
+        </div>
         <div>
         <button type="button" className="previous" onClick={this.props.previousPage}>
           Previous
         </button>
-        <button type="submit" className="next">Next</button>
+        <button type="submit" className="next">Valider</button>
         </div>
         </form>
       </div>

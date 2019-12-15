@@ -25,7 +25,7 @@ class StepOne extends React.Component {
             <label>Nom</label>
             <input
               className='u-full-width'
-              placeholder='First Name'
+              placeholder='Nom'
               name="nom"
               type='text'
               value={this.props.commande.nom}
@@ -39,7 +39,7 @@ class StepOne extends React.Component {
             <label>Prénom</label>
             <input
               className='u-full-width'
-              placeholder='Last Name'
+              placeholder='Prénom'
               type='text'
               name="prenom"
               value={this.props.commande.prenom}
@@ -52,7 +52,7 @@ class StepOne extends React.Component {
             <label>Adresse</label>
             <textarea
               className='u-full-width'
-              placeholder='Last Name'
+              placeholder='Adresse'
               type='text'
               name="adresse"
               value={this.props.commande.adresse}
@@ -65,7 +65,7 @@ class StepOne extends React.Component {
             <label>Téléphone</label>
             <input
               className='u-full-width'
-              placeholder='Last Name'
+              placeholder='Tél'
               type='text'
               name="tel"
               value={this.props.commande.tel}

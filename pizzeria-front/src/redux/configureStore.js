@@ -4,18 +4,19 @@ import * as types from './actionTypes';
 import mySaga from './sagas';
 
 const data =[
-  {nomClient :'abdelhak',
-  prenomClient : 'khalilo',
+  {
+  nomClient :'abdelhak',
+  prenomClient : 'khalil',
   adresse :'adresse',
   typePizza :'margaritta',
   taillePizza:'XL',
   saucePizza : 'sauce tomate',
   quantite : 2,
   dateCommande :'12-12/2019'},
-  {nom :'labi',
-  prenom : 'rachid',
+  {nomClient :'labi',
+  prenomClient : 'rachid',
   adresse :'lot warda rue',
-  typeTizza :'4 saison',
+  typePizza :'4 saison',
   taillePizza:'XL',
   saucePizza : 'sauce tomate',
   quantite : 4,
@@ -24,7 +25,7 @@ const data =[
 const initialState = {
   page : 1,
   commandeToAdd :{
-  nom : 'khalill',
+  nom : '',
   prenom : '',
   adresse : '',
   tel : '',
@@ -50,15 +51,15 @@ const initialState = {
       console.log(state);
       return state;
       case types.INPUT_CHANGE :
-      const { name, value } = event.target;
-      stateCopy= {
-        ...state,
-        commandeToAdd : {
-          ...state.commandeToAdd,
-          name : value
-        }
+      const { name, value } = action.input;
+      const newCommand = {...state.commandeToAdd};
+      newCommand[name]=value;
+      stateCopy={
+        page : state.page,
+        commandeToAdd : newCommand,
+        listCommande : state.listCommande
       }
-      console.log(stateCopy.commandeToAdd);
+      return stateCopy;
       case types.FETCH_DATA_SUCCESS : 
       console.log(action.data);
       stateCopy={

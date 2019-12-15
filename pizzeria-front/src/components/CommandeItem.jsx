@@ -14,9 +14,9 @@ export default class CommandeItem extends Component {
     this.props.livrerCommande(id);
   }
     render() {
-        const {nomClient,prenomClient,adresse,tel,typePizza,taillePizza,saucePizza,quantite,dateCommande} = this.props.commande;
+        const {nomClient,prenomClient,adresse,tel,typePizza,taillePizza,saucePizza,quantite} = this.props.commande;
       return (
-        <tr key={this.props.id}><td>{nomClient}</td><td>{prenomClient}</td><td>{adresse}</td><td>{tel}</td><td>{typePizza}</td><td>{taillePizza}</td><td>{saucePizza}</td><td>{quantite}</td><td>{dateCommande}</td><td><button onClick={this.livrerCommande}>Livrer</button></td></tr>
+        <tr key={this.props.id}><td>{nomClient}</td><td>{prenomClient}</td><td>{adresse}</td><td>{tel}</td><td>{typePizza}</td><td>{taillePizza}</td><td>{saucePizza}</td><td>{quantite}</td><td><button onClick={this.livrerCommande}>Livrer</button></td></tr>
       );
     }
   }
