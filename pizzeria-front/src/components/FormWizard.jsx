@@ -8,15 +8,21 @@ class FormWizard extends Component {
       super(props);
       this.nextPage = this.nextPage.bind(this);
       this.previousPage = this.previousPage.bind(this);
-      this.state = {
-        page: 1,
-      };
+      this.handleInputChange = this.handleInputChange.bind(this);
+     
     }
     nextPage() {
+        event.preventDefault();
         this.props.dispatch({ type : "NEXT_PAGE"});
     }
-  
+    handleInputChange(event){
+      event.preventDefault();
+      const { name, value } = event.target;
+      console.log(event.target.value);
+      this.props.dispatch({ type : "INPUT_CHANGE",input : {name,value}});
+    }
     previousPage() {
+      event.preventDefault();
         this.props.dispatch({ type : "PREVIOUS_PAGE"});
     }
     submitForm() {
@@ -28,9 +34,9 @@ class FormWizard extends Component {
       return (
       <fieldset>
       <legend>Commande de pizza</legend>
-          {this.props.page === 1 && <StepOne suivant={this.nextPage}/>}
+          {this.props.page === 1 && <StepOne handleInputChange ={this.handleInputChange} commande={this.props.commande} suivant={this.nextPage}/>}
           {this.props.page === 2 &&
-            <StepTwo previousPage={this.previousPage}
+            <StepTwo commande={this.props.commande} handleInputChange ={this.handleInputChange} previousPage={this.previousPage}
             onSubmit={this.nextPage} /> }
       </fieldset>
       );
@@ -40,7 +46,8 @@ class FormWizard extends Component {
   
   //cette fonction permet de selectionner juste les donnée utilisé par le composant connecté
   const mapStateToProps =(state) => ({
-    page : state.page,
+    commande : state.commandeToAdd,
+    page : state.page
   });
   //cette fonction permet de connecter un composant react au store
   export default connect(mapStateToProps)(FormWizard);

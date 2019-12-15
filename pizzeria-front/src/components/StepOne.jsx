@@ -26,9 +26,10 @@ class StepOne extends React.Component {
             <input
               className='u-full-width'
               placeholder='First Name'
+              name="nom"
               type='text'
-              value={this.props.nom}
-              
+              value={this.props.commande.nom}
+              onChange={this.props.handleInputChange}
               autoFocus
             />
           </div>
@@ -40,8 +41,9 @@ class StepOne extends React.Component {
               className='u-full-width'
               placeholder='Last Name'
               type='text'
-              value={this.props.prenom}
-              onChange={this.handleLastNameChanged}
+              name="prenom"
+              value={this.props.commande.prenom}
+              onChange={this.props.handleInputChange}
             />
           </div>
         </div>
@@ -52,8 +54,9 @@ class StepOne extends React.Component {
               className='u-full-width'
               placeholder='Last Name'
               type='text'
-              value={this.props.adresse}
-              onChange={this.handleLastNameChanged}
+              name="adresse"
+              value={this.props.commande.adresse}
+              onChange={this.props.handleInputChange}
             />
           </div>
         </div>
@@ -64,8 +67,9 @@ class StepOne extends React.Component {
               className='u-full-width'
               placeholder='Last Name'
               type='text'
-              onChange={this.handleLastNameChanged}
-              value={this.props.tel}
+              name="tel"
+              value={this.props.commande.tel}
+              onChange={this.props.handleInputChange}
             />
           </div>
         </div>

@@ -1,21 +1,23 @@
+import * as types from './actionTypes';
+
 export function nextPage()
 {
     return {
-    type:'NEXT_PAGE',
+    type: types.NEXT_PAGE,
     }
 }
 
 export function previousPage()
 {
     return {
-    type:'PREVIOUS_PAGE',
+    type: types.PREVIOUS_PAGE,
     }
 }
 
 export function saveCommande(commande)
 {
     return {
-        type:'SAVE_COMMANDE',
+        type: types.SAVE_COMMANDE,
         payload:commande
         }
 
@@ -23,7 +25,7 @@ export function saveCommande(commande)
 export function livrerCommande(id)
 {
     return {
-        type:'LIVRER_COMMANDE',
+        type: types.LIVRER_COMMANDE,
         payload:id
         }
 

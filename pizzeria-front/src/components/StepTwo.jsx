@@ -23,29 +23,35 @@ class StepTwo extends React.Component {
           <div className='six columns'>
             <label>Type Pizza</label>
             <select
+             value={this.props.commande.typePizza}
+             onChange={this.props.handleInputChange}
               className='u-full-width required'
-              onChange={this.handleEmailChanged} >
+              onChange={this.props.handleInputChange} >
             <option value="Margaritta">Margaritta</option>
             <option value="4 saison">4 saison</option>
             <option value="Mixte">Mixte</option>
            </select>
           </div>
         </div>
+        {/*
         <div className='row'>
           <div className='four columns'>
-          <label class="radio-inline"><input type="radio" name="optradio" checked />Medium</label>  
+          <label className="radio-inline"><input type="radio" name="optradio" checked />Medium</label>  
           </div>
           <div className='four columns'>
-          <label class="radio-inline"><input type="radio" name="optradio" /> Large</label>
+          <label className="radio-inline"><input type="radio" name="optradio" /> Large</label>
           </div>
           <div className='four columns'>
-          <label class="radio-inline"><input type="radio" name="optradio" />XL</label>
+          <label className="radio-inline"><input type="radio" name="optradio" />XL</label>
           </div>
         </div>
+        */}
         <div className='row'>
         <div className='six columns'>
             <label>Sauce</label>
             <select
+             value={this.props.commande.saucePizza}
+             onChange={this.props.handleInputChange}
               className='u-full-width required'
               onChange={this.handleEmailChanged} >
             <option value="Base Crème fraîche">Base Crème fraîche</option>
