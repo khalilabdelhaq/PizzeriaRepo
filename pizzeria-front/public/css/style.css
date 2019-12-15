@@ -1,0 +1,13 @@
+fieldset{
+    border: 1px solid black;
+    width: 400px;
+    float: left;
+    margin-right: 20px;
+}
+.thead-dark{
+    background-color: black;
+    color : white;
+}
+.livrer-icon{
+    background-image: url('../livrer.png')
+}
