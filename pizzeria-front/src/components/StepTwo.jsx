@@ -79,7 +79,7 @@ class StepTwo extends React.Component {
         </div>
         <div>
         <button type="button" className="previous" onClick={this.props.previousPage}>
-          Previous
+          Précédent
         </button>
         <button type="button" className="next" onClick={this.props.submitForm}>Valider</button>
         </div>

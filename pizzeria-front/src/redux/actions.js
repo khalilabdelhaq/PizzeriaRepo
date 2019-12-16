@@ -25,7 +25,7 @@ export function saveCommande(commande)
 export function livrerCommande(id)
 {
     return {
-        type: types.LIVRER_COMMANDE,
+        type: types.LIVRER_COMMANDE_REQUEST,
         payload:id
         }
 

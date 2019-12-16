@@ -16,4 +16,8 @@ public interface PizzaCommandeRepo extends JpaRepository<PizzaCommande, Long>,
 	@Modifying
 	@Query("update PizzaCommande p set p.livree = FALSE where p.id = ?1")
 	void setPizzaCommandeById(Long userId);
+	
+
+    @Query("SELECT p FROM PizzaCommande p WHERE p.id = ?1")
+    PizzaCommande findByIde(Long fooIn);
 }

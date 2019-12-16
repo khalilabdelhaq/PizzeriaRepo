@@ -1,33 +1,37 @@
 import React, { Component } from 'react';
 import CommandeList from './CommandeList';
 import { connect } from "react-redux";
-import {fetchAllCommandesAction} from '../redux/actions'
+import {fetchAllCommandesAction,livrerCommande} from '../redux/actions'
+
 
 class CommandeTable extends Component {
   constructor(props) {
     super(props);
+   this.livrerCommande=this.livrerCommande.bind(this);
   }
   componentDidMount(){
     this.props.fetchAllCommandes();
   }
 
-  livrerCommande(){
-
+  livrerCommande(id){
+      console.log(id);
+      this.props.livrerCommande(id);
   }
   
     render() {
         
       return (
         <table className="table table-hover">
-        <thead className="thead-dark"><tr><th>Nom</th><th>Prenom</th><th>Adresse</th><th>Tél</th><th>Type Pizza</th><th>Taille</th><th>Sauce</th><th>Quantité</th><th>Edit/Save</th></tr></thead>
-        <CommandeList data={this.props.data}/>
+        <thead className="thead-dark"><tr><th>Nom</th><th>Prenom</th><th>Adresse</th><th>Tél</th><th>Type Pizza</th><th>Taille</th><th>Sauce</th><th>Quantité</th><th>Livrer</th></tr></thead>
+        <CommandeList livrerCommande={this.livrerCommande} data={this.props.data}/>
         </table>
       );
     }
   }
   
   const mapDispatchToProps = dispatch => ({
-    fetchAllCommandes: () => dispatch(fetchAllCommandesAction())
+    fetchAllCommandes: () => dispatch(fetchAllCommandesAction()),
+    livrerCommande : (id) => dispatch(livrerCommande(id))
   });
   
   const mapStateToProps =(state) => ({

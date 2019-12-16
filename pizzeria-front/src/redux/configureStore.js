@@ -76,6 +76,17 @@ const initialState = {
         listCommande : newListCommande,
       }
       return stateCopy;
+
+      case types.PUT_DATA_SUCCESS :
+      const newListCommand=state.listCommande.filter( x => x.id !== action.data);
+      console.log(newListCommand);
+      console.log(action.data);
+      stateCopy = {
+        page : state.page,
+        commandeToAdd : state.commandeToAdd,
+        listCommande : newListCommand,
+      }
+      return stateCopy;
         default :
         return state;
     }

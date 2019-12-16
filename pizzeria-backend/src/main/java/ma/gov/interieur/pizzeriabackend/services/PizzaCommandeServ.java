@@ -13,4 +13,8 @@ public interface PizzaCommandeServ {
 	void livrerCommande(Long id);
 
 	PizzaCommande saveCommande(PizzaCommande commande);
+
+	PizzaCommande findById(long id);
+	
+	PizzaCommande updateCommande(PizzaCommande commande);
 }

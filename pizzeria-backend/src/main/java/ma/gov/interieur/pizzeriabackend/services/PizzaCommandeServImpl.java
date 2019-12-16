@@ -36,4 +36,16 @@ public PizzaCommande saveCommande(PizzaCommande commande) {
 	return pizzaCommandeRepo.save(commande);
 }
 
+@Override
+public PizzaCommande findById(long id) {
+	// TODO Auto-generated method stub
+	return pizzaCommandeRepo.findByIde(id);
+}
+
+@Override
+public PizzaCommande updateCommande(PizzaCommande commande) {
+	// TODO Auto-generated method stub
+	return pizzaCommandeRepo.save(commande);
+}
+
 }

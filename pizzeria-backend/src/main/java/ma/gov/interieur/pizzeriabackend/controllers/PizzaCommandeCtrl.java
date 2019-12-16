@@ -4,6 +4,7 @@ import java.util.List;
 
 import ma.gov.interieur.pizzeriabackend.domains.PizzaCommande;
 import ma.gov.interieur.pizzeriabackend.services.PizzaCommandeServ;
+import ma.gov.interieur.pizzeriabackend.utils.CustomErrorType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -11,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,12 +36,20 @@ public class PizzaCommandeCtrl {
 		return new ResponseEntity<List<PizzaCommande>>(result, HttpStatus.OK);
 	}
 
-	// ici on va simuler la livraison de la commande
-	@DeleteMapping("/livrerCommande/{id}")
-	public void livrerCommande(@PathVariable Long id) {
-		pizzaCommandeServ.livrerCommande(id);
-
-	}
+	 @RequestMapping(value = "/livrerCommande/{id}", method = RequestMethod.PUT)
+	    public ResponseEntity<?> updateCommande(@PathVariable("id") long id) {
+	       
+	        PizzaCommande currentCommande = pizzaCommandeServ.findById(id);
+	 
+	        if (currentCommande == null) {
+	            return new ResponseEntity(new CustomErrorType("Unable to update. Pizzeria with id " + id + " not found."),
+	                    HttpStatus.NOT_FOUND);
+	        }
+	        //On marque la commande Livrée
+	        currentCommande.setLivree(true);
+	        pizzaCommandeServ.updateCommande(currentCommande);
+	        return new ResponseEntity<PizzaCommande>(currentCommande, HttpStatus.OK);
+	    }
 
 	@RequestMapping(method = RequestMethod.POST, value = "/saveCommande")
 	public ResponseEntity<PizzaCommande> saveCommande(

@@ -74,7 +74,7 @@ class StepOne extends React.Component {
           </div>
         </div>
         <div>
-        <button onClick={this.props.suivant} className="next">Next</button>
+        <button onClick={this.props.suivant} className="next">Suivant</button>
         </div>
         </form>
       </div>
