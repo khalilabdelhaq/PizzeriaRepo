@@ -19,14 +19,14 @@ class StepOne extends React.Component {
   render () {
     return (
       <div>
-        <form onSubmit={this.props.suivant}>
+        <form>
         <div className='row'>
           <div className='six columns'>
             <label>Nom</label>
             <input
               className='u-full-width'
               placeholder='Nom'
-              name="nom"
+              name="nomClient"
               type='text'
               value={this.props.commande.nom}
               onChange={this.props.handleInputChange}
@@ -41,7 +41,7 @@ class StepOne extends React.Component {
               className='u-full-width'
               placeholder='Prénom'
               type='text'
-              name="prenom"
+              name="prenomClient"
               value={this.props.commande.prenom}
               onChange={this.props.handleInputChange}
             />
@@ -74,7 +74,7 @@ class StepOne extends React.Component {
           </div>
         </div>
         <div>
-        <button type="submit" className="next">Next</button>
+        <button onClick={this.props.suivant} className="next">Next</button>
         </div>
         </form>
       </div>

@@ -9,6 +9,7 @@ class FormWizard extends Component {
       this.nextPage = this.nextPage.bind(this);
       this.previousPage = this.previousPage.bind(this);
       this.handleInputChange = this.handleInputChange.bind(this);
+      this.submitForm = this.submitForm.bind(this);
      
     }
     nextPage() {
@@ -25,8 +26,10 @@ class FormWizard extends Component {
       event.preventDefault();
         this.props.dispatch({ type : "PREVIOUS_PAGE"});
     }
+
     submitForm() {
-        this.props.dispatch({ type : "SUBMIT_FORM"});
+      console.log(this.props.commande);
+      this.props.dispatch({ type : "SAVE_COMMANDE_REQUEST",payload :this.props.commande});
     }
   
     render() {
@@ -37,7 +40,7 @@ class FormWizard extends Component {
           {this.props.page === 1 && <StepOne handleInputChange ={this.handleInputChange} commande={this.props.commande} suivant={this.nextPage}/>}
           {this.props.page === 2 &&
             <StepTwo commande={this.props.commande} handleInputChange ={this.handleInputChange} previousPage={this.previousPage}
-            onSubmit={this.nextPage} /> }
+            submitForm={this.submitForm} /> }
       </fieldset>
       );
     }

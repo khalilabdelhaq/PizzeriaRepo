@@ -20,7 +20,7 @@ public class PizzaCommande {
 	private String saucePizza;
 	private Integer quantite;
 	@Column(columnDefinition = "boolean default FALSE")
-	private Boolean livree;
+	private Boolean livree=false;
 
 	public PizzaCommande() {
 		super();

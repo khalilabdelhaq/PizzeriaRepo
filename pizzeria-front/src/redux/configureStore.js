@@ -1,7 +1,7 @@
 import { createStore,applyMiddleware} from "redux";
 import createSagaMiddleware from 'redux-saga';
 import * as types from './actionTypes';
-import mySaga from './sagas';
+import mySaga from './rootSaga';
 
 const data =[
   {
@@ -10,7 +10,7 @@ const data =[
   adresse :'adresse',
   typePizza :'margaritta',
   taillePizza:'XL',
-  saucePizza : 'sauce tomate',
+  saucePizza : 'saucee tomate',
   quantite : 2,
   dateCommande :'12-12/2019'},
   {nomClient :'labi',
@@ -25,13 +25,14 @@ const data =[
 const initialState = {
   page : 1,
   commandeToAdd :{
-  nom : '',
-  prenom : '',
+  nomClient : '',
+  prenomClient : '',
   adresse : '',
   tel : '',
   typePizza : '',
   taillePizza : '',
-  saucePizza : ''
+  saucePizza : '',
+  quantite : '1'
   }
   ,
   listCommande : data
@@ -64,6 +65,15 @@ const initialState = {
       console.log(action.data);
       stateCopy={
         ...state,listCommande:action.data
+      }
+      return stateCopy;
+      case types.POST_DATA_SUCCESS :
+      const newListCommande = [...state.listCommande];
+      newListCommande.push(action.data),
+      stateCopy = {
+        page : 1,
+        commandeToAdd : initialState.commandeToAdd,
+        listCommande : newListCommande,
       }
       return stateCopy;
         default :

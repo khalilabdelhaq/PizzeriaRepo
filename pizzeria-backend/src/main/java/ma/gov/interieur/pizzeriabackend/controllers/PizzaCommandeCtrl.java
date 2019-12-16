@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,7 +45,7 @@ public class PizzaCommandeCtrl {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/saveCommande")
 	public ResponseEntity<PizzaCommande> saveCommande(
-			PizzaCommande employee) {
+			@RequestBody PizzaCommande employee) {
 		PizzaCommande inserted = pizzaCommandeServ.saveCommande(employee);
 		return new ResponseEntity<PizzaCommande>(inserted, new HttpHeaders(),
 				HttpStatus.OK);

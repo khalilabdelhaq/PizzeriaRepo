@@ -68,10 +68,10 @@ class StepTwo extends React.Component {
           <div className='row'>
           <div className='six columns'>
             <label>Quantite</label>
-            <input type="number"
+            <input
               className='u-full-width'
-              placeholder='Last Name'
               name="quantite"
+              type='number'
               value={this.props.commande.quantite}
               onChange={this.props.handleInputChange}
             />
@@ -81,7 +81,7 @@ class StepTwo extends React.Component {
         <button type="button" className="previous" onClick={this.props.previousPage}>
           Previous
         </button>
-        <button type="submit" className="next">Valider</button>
+        <button type="button" className="next" onClick={this.props.submitForm}>Valider</button>
         </div>
         </form>
       </div>

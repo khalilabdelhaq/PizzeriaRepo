@@ -1,18 +1,35 @@
-import {call,takeLatest, put, } from 'redux-saga/effects';
+import {call, put, } from 'redux-saga/effects';
 import * as types from './actionTypes';
 
+const ROOT_URL = "http://localhost:8080/";
+const getApi =(url) => fetch(url).then(response => response.json());
+const postApi = (url,body) => fetch(url,{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify(body),
+  }).then(response => response.json());
 
-const api =(url) => fetch(url).then(response => response.json())
-
- function* fetchCommandes(action) {
+ export function* fetchCommandes(action) {
     try{
-        const data = yield call(api,'http://localhost:8080/pizzaCommande')
+        console.log('saga')
+        const data = yield call(getApi,`${ROOT_URL}pizzaCommande`)
         yield put({type : types.FETCH_DATA_SUCCESS , data : data})
     }
     catch (e){
         console.log(e)
     }
 }
-export default function* mySaga(){
-    yield takeLatest(types.GET_COMMANDES_REQUEST,fetchCommandes)
+
+export function* saveCommande(action) {
+    try{
+        console.log(action.payload)
+        const data = yield call(postApi,`${ROOT_URL}saveCommande`,action.payload)
+        yield put({type : types.POST_DATA_SUCCESS , data : data})
+    }
+    catch (e){
+        console.log(e)
+    }
 }
