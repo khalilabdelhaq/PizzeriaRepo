@@ -14,7 +14,11 @@ class FormWizard extends Component {
     }
     nextPage() {
         event.preventDefault();
-        this.props.dispatch({ type : "NEXT_PAGE"});
+        var form = document.getElementById("stepForm");
+        var isValidForm = form.checkValidity();
+        if(isValidForm){
+          this.props.dispatch({ type : "NEXT_PAGE"});
+        }
     }
     handleInputChange(event){
       event.preventDefault();

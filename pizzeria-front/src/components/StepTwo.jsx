@@ -27,7 +27,7 @@ class StepTwo extends React.Component {
              value={this.props.commande.typePizza}
               className='u-full-width required'
               onChange={this.props.handleInputChange} >
-            <option value="Margaritta">Margaritta</option>
+            <option value="Margaritta" selected>Margaritta</option>
             <option value="4 saison">4 saison</option>
             <option value="Mixte">Mixte</option>
            </select>
@@ -43,7 +43,7 @@ class StepTwo extends React.Component {
              onChange={this.props.handleInputChange}
               className='u-full-width required'
                >
-            <option value="Medium">Medium</option>
+            <option value="Medium" selected>Medium</option>
             <option value="XL">XL</option>
             <option value="Large">Large</option>
            </select>
@@ -59,7 +59,7 @@ class StepTwo extends React.Component {
              onChange={this.props.handleInputChange}
               className='u-full-width required'
                >
-            <option value="Base Crème fraîche">Base Crème fraîche</option>
+            <option value="Base Crème fraîche" selected>Base Crème fraîche</option>
             <option value="Base Sauce Tomate">Base Sauce Tomate</option>
             <option value="Mixte">Mixte</option>
            </select>

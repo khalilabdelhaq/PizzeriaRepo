@@ -93,6 +93,7 @@ const initialState = {
   }
   const configureStore = () =>{
     const sagaMiddelware=createSagaMiddleware()
+    //On applique notre middelware au store
     const store = createStore(reducer,applyMiddleware(sagaMiddelware));
     sagaMiddelware.run(mySaga)
     return store;

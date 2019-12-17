@@ -19,7 +19,7 @@ class StepOne extends React.Component {
   render () {
     return (
       <div>
-        <form>
+        <form id="stepForm">
         <div className='row'>
           <div className='six columns'>
             <label>Nom</label>
@@ -28,9 +28,9 @@ class StepOne extends React.Component {
               placeholder='Nom'
               name="nomClient"
               type='text'
-              value={this.props.commande.nom}
+              value={this.props.commande.nomClient}
               onChange={this.props.handleInputChange}
-              autoFocus
+              required
             />
           </div>
         </div>
@@ -42,8 +42,9 @@ class StepOne extends React.Component {
               placeholder='Prénom'
               type='text'
               name="prenomClient"
-              value={this.props.commande.prenom}
+              value={this.props.commande.prenomClient}
               onChange={this.props.handleInputChange}
+              required
             />
           </div>
         </div>
@@ -57,6 +58,7 @@ class StepOne extends React.Component {
               name="adresse"
               value={this.props.commande.adresse}
               onChange={this.props.handleInputChange}
+              required
             />
           </div>
         </div>
@@ -70,6 +72,7 @@ class StepOne extends React.Component {
               name="tel"
               value={this.props.commande.tel}
               onChange={this.props.handleInputChange}
+              required
             />
           </div>
         </div>
