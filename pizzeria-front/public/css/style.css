@@ -26,3 +26,7 @@ input:valid {
 textarea:valid {
     border-left: 5px solid green !important;
   }
+h2{
+    font-size :20px !important;
+    font-style: italic;
+}

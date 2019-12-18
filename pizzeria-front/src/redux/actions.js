@@ -30,6 +30,13 @@ export function livrerCommande(id)
         }
 
 }
+
+export function detailCommande(commande){
+    return {
+        type: types.DETAIL_COMMANDE_REQUEST,
+        payload:commande
+        }
+}
 export function fetchAllCommandesAction(){
     return {
         type: types.GET_COMMANDES_REQUEST,

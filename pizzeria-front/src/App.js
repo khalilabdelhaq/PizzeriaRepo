@@ -5,6 +5,7 @@ import CommandeTable from './components/CommandeTable';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 import {nextPage,previousPage,saveCommande,livrerCommande} from './redux/actions'
+import DetailComponent from './components/DetailComponent';
 
 class App extends Component {
   constructor(props)
@@ -29,6 +30,7 @@ render(){
       <div>
       <FormWizard nextPage={this.nextPage} previousPage={this.previousPage} saveCommande={this.saveCommande}/>
       <CommandeTable livrerCommande={this.livrerCommande}/>
+      <DetailComponent />
       </div>
   );
 }
