@@ -1,6 +1,6 @@
 package ma.gov.interieur.pizzeriabackend.init;
 
-import ma.gov.interieur.pizzeriabackend.domains.PizzaCommande;
+import ma.gov.interieur.pizzeriabackend.domains.PizzaOrder;
 import ma.gov.interieur.pizzeriabackend.repositories.PizzaCommandeRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ public class DataInit implements ApplicationRunner {
 	private PizzaCommandeRepo pizzaRepo;
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		PizzaCommande commande1=new PizzaCommande();
+		PizzaOrder commande1=new PizzaOrder();
 		commande1.setNomClient("toto");
 		commande1.setPrenomClient("prenomToto");
 		commande1.setTel("0668531866");
@@ -24,7 +24,7 @@ public class DataInit implements ApplicationRunner {
 		commande1.setQuantite(2);
 		commande1.setLivree(false);
 		
-		PizzaCommande commande2=new PizzaCommande();
+		PizzaOrder commande2=new PizzaOrder();
 		commande2.setNomClient("khalil");
 		commande2.setPrenomClient("abdelhak");
 		commande2.setTel("0668531866");

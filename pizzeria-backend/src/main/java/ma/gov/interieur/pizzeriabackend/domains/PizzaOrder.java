@@ -1,13 +1,17 @@
 package ma.gov.interieur.pizzeriabackend.domains;
 
+import java.util.Calendar;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-public class PizzaCommande {
+public class PizzaOrder {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -20,9 +24,11 @@ public class PizzaCommande {
 	private String saucePizza;
 	private Integer quantite;
 	@Column(columnDefinition = "boolean default FALSE")
-	private Boolean livree=false;
+	private Boolean livree = false;
+	@Temporal(TemporalType.DATE)
+	private Calendar orderDate = Calendar.getInstance();
 
-	public PizzaCommande() {
+	public PizzaOrder() {
 		super();
 	}
 
@@ -104,6 +110,14 @@ public class PizzaCommande {
 
 	public void setLivree(Boolean livree) {
 		this.livree = livree;
+	}
+
+	public Calendar getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(Calendar orderDate) {
+		this.orderDate = orderDate;
 	}
 
 }

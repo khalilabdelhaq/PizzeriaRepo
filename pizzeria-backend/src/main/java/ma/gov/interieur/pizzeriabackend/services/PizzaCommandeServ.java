@@ -2,19 +2,19 @@ package ma.gov.interieur.pizzeriabackend.services;
 
 import java.util.List;
 
-import ma.gov.interieur.pizzeriabackend.domains.PizzaCommande;
+import ma.gov.interieur.pizzeriabackend.VO.PizzaOrderVO;
 
 public interface PizzaCommandeServ {
 
-	List<PizzaCommande> findAll();
+	List<PizzaOrderVO> findAllOrders();
 
-	List<PizzaCommande> findBylivreeFalse();
+	List<PizzaOrderVO> findBylivreeFalse();
 
-	void livrerCommande(Long id);
+	void deliverOrder(Long id);
 
-	PizzaCommande saveCommande(PizzaCommande commande);
-
-	PizzaCommande findById(long id);
+	PizzaOrderVO saveOrder(PizzaOrderVO commande);
 	
-	PizzaCommande updateCommande(PizzaCommande commande);
+	PizzaOrderVO updateOrder(PizzaOrderVO commande);
+	
+	PizzaOrderVO findById(Long id);
 }

@@ -2,7 +2,7 @@ package ma.gov.interieur.pizzeriabackend.controllers;
 
 import java.util.List;
 
-import ma.gov.interieur.pizzeriabackend.domains.PizzaCommande;
+import ma.gov.interieur.pizzeriabackend.VO.PizzaOrderVO;
 import ma.gov.interieur.pizzeriabackend.services.PizzaCommandeServ;
 import ma.gov.interieur.pizzeriabackend.utils.CustomErrorType;
 
@@ -24,38 +24,39 @@ public class PizzaCommandeCtrl {
 	@Autowired
 	PizzaCommandeServ pizzaCommandeServ;
 
-	@RequestMapping(method = RequestMethod.GET, value = "/pizzaCommande", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<PizzaCommande>> getAll() {
-		List<PizzaCommande> result = pizzaCommandeServ.findAll();
-		return new ResponseEntity<List<PizzaCommande>>(result, HttpStatus.OK);
+	@RequestMapping(method = RequestMethod.GET, value = "/orders", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<PizzaOrderVO>> getAllOrders() {
+		List<PizzaOrderVO> result = pizzaCommandeServ.findAllOrders();
+		return new ResponseEntity<List<PizzaOrderVO>>(result, HttpStatus.OK);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/commandeNonLivree", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<PizzaCommande>> getNonLivree() {
-		List<PizzaCommande> result = pizzaCommandeServ.findBylivreeFalse();
-		return new ResponseEntity<List<PizzaCommande>>(result, HttpStatus.OK);
+	@RequestMapping(method = RequestMethod.GET, value = "/undeliveredOrders", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<PizzaOrderVO>> getNonLivree() {
+		List<PizzaOrderVO> result = pizzaCommandeServ.findBylivreeFalse();
+		return new ResponseEntity<List<PizzaOrderVO>>(result, HttpStatus.OK);
 	}
 
-	 @RequestMapping(value = "/livrerCommande/{id}", method = RequestMethod.PUT)
-	    public ResponseEntity<?> updateCommande(@PathVariable("id") long id) {
-	       
-	        PizzaCommande currentCommande = pizzaCommandeServ.findById(id);
-	 
-	        if (currentCommande == null) {
-	            return new ResponseEntity(new CustomErrorType("Unable to update. Pizzeria with id " + id + " not found."),
-	                    HttpStatus.NOT_FOUND);
-	        }
-	        //On marque la commande Livrée
-	        currentCommande.setLivree(true);
-	        pizzaCommandeServ.updateCommande(currentCommande);
-	        return new ResponseEntity<PizzaCommande>(currentCommande, HttpStatus.OK);
-	    }
+	@RequestMapping(value = "/orders/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<?> deliverOrder(@PathVariable("id") long id) {
+		
+		PizzaOrderVO currentCommande = pizzaCommandeServ.findById(id);
 
-	@RequestMapping(method = RequestMethod.POST, value = "/saveCommande")
-	public ResponseEntity<PizzaCommande> saveCommande(
-			@RequestBody PizzaCommande employee) {
-		PizzaCommande inserted = pizzaCommandeServ.saveCommande(employee);
-		return new ResponseEntity<PizzaCommande>(inserted, new HttpHeaders(),
+		if (currentCommande == null) {
+			return new ResponseEntity<CustomErrorType>(
+					new CustomErrorType("Unable to update. Pizzeria with id "
+							+ id + " not found."), HttpStatus.NOT_FOUND);
+		}
+		// On marque la commande Livrée
+		currentCommande.setLivree(true);
+		pizzaCommandeServ.updateOrder(currentCommande);
+		return new ResponseEntity<PizzaOrderVO>(currentCommande, HttpStatus.OK);
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "/orders",consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<PizzaOrderVO> saveCommande(
+			@RequestBody PizzaOrderVO pizzaCommande) {
+		PizzaOrderVO inserted = pizzaCommandeServ.saveOrder(pizzaCommande);
+		return new ResponseEntity<PizzaOrderVO>(inserted, new HttpHeaders(),
 				HttpStatus.OK);
 	}
 }
