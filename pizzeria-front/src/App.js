@@ -6,6 +6,8 @@ import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 import {nextPage,previousPage,saveCommande,livrerCommande} from './redux/actions'
 import DetailComponent from './components/DetailComponent';
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
+import NavBarPage from './components/NavBarPage.jsx';
 
 class App extends Component {
   constructor(props)
@@ -27,11 +29,21 @@ submitForm() {
 }
 render(){
   return (
-      <div>
-      <FormWizard nextPage={this.nextPage} previousPage={this.previousPage} saveCommande={this.saveCommande}/>
-      <CommandeTable livrerCommande={this.livrerCommande}/>
+
+    <Router>
+    <div>
+   <NavBarPage title="Gestion des Commandes"/>
+   <Switch>
+     <Route exact path="/nouveau">
+     <FormWizard nextPage={this.nextPage} previousPage={this.previousPage} saveCommande={this.saveCommande}/>
+     </Route>
+     <Route exact path="/">
+     <CommandeTable livrerCommande={this.livrerCommande}/>
       <DetailComponent />
-      </div>
+     </Route>
+   </Switch>
+  </div>
+  </Router>
   );
 }
 }

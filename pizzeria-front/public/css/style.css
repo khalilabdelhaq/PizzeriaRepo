@@ -5,7 +5,7 @@ fieldset{
     margin-right: 20px;
 }
 .thead-dark{
-    background-color: black;
+    background-color: #3f51b5;
     color : white;
 }
 .livrer-icon{
@@ -29,4 +29,36 @@ textarea:valid {
 h2{
     font-size :20px !important;
     font-style: italic;
+}
+.navButton{
+    
+    background-color: #3f51b5 !important; 
+    margin-right: 10px !important;
+    margin-left : 10px !important;
+    color : white !important;
+    font-weight: bold !important;
+}
+.MuiAppBar-colorPrimary{
+    background-color: #F5F5F5 !important;
+    color : black !important;
+    font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+.MuiTypography-h5{
+    font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-weight: bold !important;
+}
+
+
+.next{
+    background-color: #3f51b5 ;
+    color : white;
+    border-color: #3f51b5;
+}
+.previous{
+    background : #e21836 !important;
+    color : white;
+    border-color : #e21836 !important;
+}
+button{
+    margin : 5px;
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
+import { Field } from 'formik';
 class StepOne extends React.Component {
   constructor (props) {
     super(props)
