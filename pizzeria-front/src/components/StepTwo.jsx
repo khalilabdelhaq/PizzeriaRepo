@@ -4,18 +4,8 @@ import { Field, ErrorMessage } from 'formik';
 class StepTwo extends React.Component {
   constructor(props) {
     super(props)
-    this.handleEmailChanged = this.handleEmailChanged.bind(this);
-    this.handleEmailConfirmChanged = this.handleEmailConfirmChanged.bind(this);
   }
-
-  handleEmailChanged(event) {
-    //this.setState({email: event.target.value})
-  }
-
-  handleEmailConfirmChanged(event) {
-    //this.setState({emailConfirm: event.target.value})
-  }
-
+  
   render() {
     return (
       <div>

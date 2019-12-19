@@ -9,10 +9,6 @@ import * as Yup from 'yup'
 class FormWizard extends Component {
   constructor(props) {
     super(props);
-    this.nextPage = this.nextPage.bind(this);
-    this.previousPage = this.previousPage.bind(this);
-    this.submitForm = this.submitForm.bind(this);
-
   }
   schema = () => {
     const schema = Yup.object().shape({
@@ -34,9 +30,9 @@ class FormWizard extends Component {
 
   previousPage = () => this.setState(state => ({ page: state.page - 1 }));
 
-  submitForm(values) {
-    console.log(values);
-    //this.props.history.push('/')
+  submitForm = (values) => {
+    //const { history } = this.props;
+    //this.history.push('/')
     this.props.dispatch({ type: "SAVE_COMMANDE_REQUEST", payload: values });
   }
 

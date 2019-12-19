@@ -1,6 +1,6 @@
 package ma.gov.interieur.pizzeriabackend.domains;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,8 +29,8 @@ public class PizzaOrder {
 	private Integer quantite;
 	@Column(columnDefinition = "boolean default FALSE")
 	private Boolean livree = false;
-	@Temporal(TemporalType.DATE)
-	private Calendar orderDate = Calendar.getInstance();
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date orderDate = new Date();
 
 	/**
 	 * 
@@ -207,7 +207,7 @@ public class PizzaOrder {
 	 * @return Calendar
 	 * @return
 	 */
-	public Calendar getOrderDate() {
+	public Date getOrderDate() {
 		return orderDate;
 	}
 
@@ -215,7 +215,7 @@ public class PizzaOrder {
 	 * @return void
 	 * @param orderDate
 	 */
-	public void setOrderDate(Calendar orderDate) {
+	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
 	}
 

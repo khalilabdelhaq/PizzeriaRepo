@@ -1,5 +1,7 @@
 package ma.gov.interieur.pizzeriabackend.VO;
 
+import java.text.SimpleDateFormat;
+
 import org.springframework.stereotype.Component;
 
 import ma.gov.interieur.pizzeriabackend.domains.PizzaOrder;
@@ -11,6 +13,7 @@ import ma.gov.interieur.pizzeriabackend.domains.PizzaOrder;
 @Component
 public class PizzaOrderConverter implements
 		VOConverter<PizzaOrder, PizzaOrderVO> {
+	SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 
 	/*
 	 * (non-Javadoc)
@@ -25,7 +28,7 @@ public class PizzaOrderConverter implements
 		entity.setId(vo.getId());
 		entity.setNomClient(vo.getNomClient());
 		entity.setPrenomClient(vo.getPrenomClient());
-		entity.setAdresse(vo.getPrenomClient());
+		entity.setAdresse(vo.getAdresse());
 		entity.setTel(vo.getTel());
 		entity.setTypePizza(vo.getTypePizza());
 		entity.setTaillePizza(vo.getTaillePizza());
@@ -48,14 +51,14 @@ public class PizzaOrderConverter implements
 		vo.setId(entity.getId());
 		vo.setNomClient(entity.getNomClient());
 		vo.setPrenomClient(entity.getPrenomClient());
-		vo.setAdresse(entity.getPrenomClient());
+		vo.setAdresse(entity.getAdresse());
 		vo.setTel(entity.getTel());
 		vo.setTypePizza(entity.getTypePizza());
 		vo.setTaillePizza(entity.getTaillePizza());
 		vo.setQuantite(entity.getQuantite());
 		vo.setLivree(entity.getLivree());
 		vo.setSaucePizza(entity.getSaucePizza());
-		vo.setDateOrder(entity.getOrderDate().toString());
+		vo.setDateOrder(sdf.format(entity.getOrderDate()));
 		return vo;
 	}
 
