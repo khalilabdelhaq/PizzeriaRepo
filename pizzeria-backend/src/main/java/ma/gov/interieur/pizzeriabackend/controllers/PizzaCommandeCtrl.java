@@ -18,27 +18,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * @author KHALIL
+ *
+ */
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 public class PizzaCommandeCtrl {
 	@Autowired
 	PizzaCommandeServ pizzaCommandeServ;
 
+	/**
+	 * @return ResponseEntity<List<PizzaOrderVO>>
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/orders", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<PizzaOrderVO>> getAllOrders() {
 		List<PizzaOrderVO> result = pizzaCommandeServ.findAllOrders();
 		return new ResponseEntity<List<PizzaOrderVO>>(result, HttpStatus.OK);
 	}
 
+	/**
+	 * @return ResponseEntity<List<PizzaOrderVO>>
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/undeliveredOrders", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<PizzaOrderVO>> getNonLivree() {
 		List<PizzaOrderVO> result = pizzaCommandeServ.findBylivreeFalse();
 		return new ResponseEntity<List<PizzaOrderVO>>(result, HttpStatus.OK);
 	}
 
+	/**
+	 * @return ResponseEntity<?>
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping(value = "/orders/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<?> deliverOrder(@PathVariable("id") long id) {
-		
+
 		PizzaOrderVO currentCommande = pizzaCommandeServ.findById(id);
 
 		if (currentCommande == null) {
@@ -52,7 +69,12 @@ public class PizzaCommandeCtrl {
 		return new ResponseEntity<PizzaOrderVO>(currentCommande, HttpStatus.OK);
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/orders",consumes = MediaType.APPLICATION_JSON_VALUE)
+	/**
+	 * @return ResponseEntity<PizzaOrderVO>
+	 * @param pizzaCommande
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.POST, value = "/orders", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<PizzaOrderVO> saveCommande(
 			@RequestBody PizzaOrderVO pizzaCommande) {
 		PizzaOrderVO inserted = pizzaCommandeServ.saveOrder(pizzaCommande);

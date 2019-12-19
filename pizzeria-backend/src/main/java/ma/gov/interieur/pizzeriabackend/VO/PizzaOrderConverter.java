@@ -4,10 +4,21 @@ import org.springframework.stereotype.Component;
 
 import ma.gov.interieur.pizzeriabackend.domains.PizzaOrder;
 
+/**
+ * @author KHALIL
+ *
+ */
 @Component
 public class PizzaOrderConverter implements
 		VOConverter<PizzaOrder, PizzaOrderVO> {
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * ma.gov.interieur.pizzeriabackend.VO.VOConverter#convertToEntity(java.
+	 * lang.Object)
+	 */
 	@Override
 	public PizzaOrder convertToEntity(PizzaOrderVO vo) {
 		PizzaOrder entity = new PizzaOrder();
@@ -24,6 +35,13 @@ public class PizzaOrderConverter implements
 		return entity;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * ma.gov.interieur.pizzeriabackend.VO.VOConverter#convertToVO(java.lang
+	 * .Object)
+	 */
 	@Override
 	public PizzaOrderVO convertToVO(PizzaOrder entity) {
 		PizzaOrderVO vo = new PizzaOrderVO();

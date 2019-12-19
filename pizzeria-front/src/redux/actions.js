@@ -1,44 +1,40 @@
 import * as types from './actionTypes';
 
-export function nextPage()
-{
+export function nextPage() {
     return {
-    type: types.NEXT_PAGE,
+        type: types.NEXT_PAGE,
     }
 }
 
-export function previousPage()
-{
+export function previousPage() {
     return {
-    type: types.PREVIOUS_PAGE,
+        type: types.PREVIOUS_PAGE,
     }
 }
 
-export function saveCommande(commande)
-{
+export function saveCommande(commande) {
     return {
         type: types.SAVE_COMMANDE,
-        payload:commande
-        }
+        payload: commande
+    }
 
 }
-export function livrerCommande(id)
-{
+export function livrerCommande(id) {
     return {
         type: types.LIVRER_COMMANDE_REQUEST,
-        payload:id
-        }
+        payload: id
+    }
 
 }
 
-export function detailCommande(commande){
+export function detailCommande(commande) {
     return {
         type: types.DETAIL_COMMANDE_REQUEST,
-        payload:commande
-        }
+        payload: commande
+    }
 }
-export function fetchAllCommandesAction(){
+export function fetchAllCommandesAction() {
     return {
         type: types.GET_COMMANDES_REQUEST,
-        }
+    }
 }
