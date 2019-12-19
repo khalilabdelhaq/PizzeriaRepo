@@ -27,7 +27,7 @@ class CommandeTable extends Component {
 
     return (
       <table className="table table-hover">
-        <thead className="thead-dark"><tr><th>Nom</th><th>Prenom</th><th>Adresse</th><th>Tél</th><th>Type Pizza</th><th>Taille</th><th>Sauce</th><th>Quantité</th><th>Livrer</th></tr></thead>
+        <thead className="thead-dark"><tr><th>Nom</th><th>Prenom</th><th>Adresse</th><th>Tél</th><th>Type Pizza</th><th>Taille</th><th>Sauce</th><th>Quantité</th><th>Date commande</th><th>Livrer</th></tr></thead>
         <CommandeList detailCommande={this.detailCommande} livrerCommande={this.livrerCommande} data={this.props.data} />
       </table>
     );

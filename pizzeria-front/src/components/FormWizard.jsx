@@ -3,38 +3,41 @@ import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import { connect } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from 'yup'
+
 
 class FormWizard extends Component {
   constructor(props) {
     super(props);
     this.nextPage = this.nextPage.bind(this);
     this.previousPage = this.previousPage.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
 
   }
-  nextPage() {
-    event.preventDefault();
-    var form = document.getElementById("stepForm");
-    var isValidForm = form.checkValidity();
-    if (isValidForm) {
-      this.props.dispatch({ type: "NEXT_PAGE" });
-    }
-  }
-  handleInputChange(event) {
-    event.preventDefault();
-    const { name, value } = event.target;
-    console.log(event.target.value);
-    this.props.dispatch({ type: "INPUT_CHANGE", input: { name, value } });
-  }
-  previousPage() {
-    event.preventDefault();
-    this.props.dispatch({ type: "PREVIOUS_PAGE" });
-  }
+  schema = () => {
+    const schema = Yup.object().shape({
+      nomClient: Yup.string().required('Veuillez renseigner numéro nom.'),
+      prenomClient: Yup.string().required('Veuillez renseigner votre prénom.'),
+      adresse: Yup.string().required('Veuillez renseigner l\'adresse.'),
+      tel: Yup.number().typeError("Vérifier format Tél.").required('Veuillez renseigner numéro Tél.'),
+      typePizza: Yup.string().required('Veuillez renseigner type pizza.'),
+      taillePizza: Yup.string().required('Veuillez renseigner taille pizza.'),
+      saucePizza: Yup.string().required('Veuillez renseigner sauce pizza.'),
+      quantite: Yup.number().positive("la quantité doit être positive").required('Veuillez renseigner quantité.'),
+    });
+    return schema;
+  };
+  state = {
+    page: 1
+  };
+  nextPage = () => this.setState(state => ({ page: state.page + 1 }));
 
-  submitForm() {
-    console.log(this.props.commande);
-    this.props.dispatch({ type: "SAVE_COMMANDE_REQUEST", payload: this.props.commande });
+  previousPage = () => this.setState(state => ({ page: state.page - 1 }));
+
+  submitForm(values) {
+    console.log(values);
+    //this.props.history.push('/')
+    this.props.dispatch({ type: "SAVE_COMMANDE_REQUEST", payload: values });
   }
 
   render() {
@@ -42,10 +45,29 @@ class FormWizard extends Component {
     return (
       <fieldset>
         <legend>Commande de pizza</legend>
-        {this.props.page === 1 && <StepOne handleInputChange={this.handleInputChange} commande={this.props.commande} suivant={this.nextPage} />}
-        {this.props.page === 2 &&
-          <StepTwo commande={this.props.commande} handleInputChange={this.handleInputChange} previousPage={this.previousPage}
-            submitForm={this.submitForm} />}
+        <Formik
+          initialValues={{
+            nomClient: '',
+            prenomClient: '',
+            adresse: '',
+            tel: '',
+            typePizza: '',
+            taillePizza: '',
+            saucePizza: '',
+            quantite: '1'
+          }}
+          onSubmit={this.submitForm}
+          validationSchema={this.schema}
+        >
+          {() => (
+            <Form style={{ display: "flex" }}>
+              {this.state.page === 1 && <StepOne suivant={this.nextPage} />}
+              {this.state.page === 2 &&
+                <StepTwo previousPage={this.previousPage}
+                  submitForm={this.submitForm} />}
+            </Form>
+          )}
+        </Formik>
       </fieldset>
     );
   }

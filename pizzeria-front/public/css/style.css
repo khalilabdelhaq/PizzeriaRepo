@@ -11,21 +11,6 @@ fieldset{
 .livrer-icon{
     background-image: url('../livrer.png')
 }
-input:invalid {
-    border-left: 5px solid #8B0000 !important;
-  }
-  
-input:valid {
-    border-left: 5px solid green !important;
-  }
-
-  textarea:invalid {
-    border-left: 5px solid #8B0000 !important;
-  }
-  
-textarea:valid {
-    border-left: 5px solid green !important;
-  }
 h2{
     font-size :20px !important;
     font-style: italic;
@@ -42,6 +27,7 @@ h2{
     background-color: #F5F5F5 !important;
     color : black !important;
     font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    margin-bottom: 40px;
 }
 .MuiTypography-h5{
     font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
@@ -61,4 +47,9 @@ h2{
 }
 button{
     margin : 5px;
+}
+.row div{
+    color : red;
+    font-weight: bold;
+    font-style: italic;
 }
