@@ -12,7 +12,7 @@ class FormWizard extends Component {
   }
   schema = () => {
     const schema = Yup.object().shape({
-      nomClient: Yup.string().required('Veuillez renseigner numéro nom.'),
+      nomClient: Yup.string().required('Veuillez renseigner votre nom.'),
       prenomClient: Yup.string().required('Veuillez renseigner votre prénom.'),
       adresse: Yup.string().required('Veuillez renseigner l\'adresse.'),
       tel: Yup.number().typeError("Vérifier format Tél.").required('Veuillez renseigner numéro Tél.'),

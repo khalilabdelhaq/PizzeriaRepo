@@ -13,18 +13,54 @@ public class PizzaOrderVO implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * 
+	 */
 	private Long id;
+	/**
+	 * 
+	 */
 	private String nomClient;
+	/**
+	 * 
+	 */
 	private String prenomClient;
+	/**
+	 * 
+	 */
 	private String adresse;
+	/**
+	 * 
+	 */
 	private String tel;
+	/**
+	 * 
+	 */
 	private String typePizza;
+	/**
+	 * 
+	 */
 	private String taillePizza;
+	/**
+	 * 
+	 */
 	private String saucePizza;
+	/**
+	 * 
+	 */
 	private Integer quantite;
+	/**
+	 * 
+	 */
 	private Boolean livree = false;
+	/**
+	 * 
+	 */
 	private String dateOrder;
 
+	/**
+	 * 
+	 */
 	public PizzaOrderVO() {
 		super();
 		// TODO Auto-generated constructor stub

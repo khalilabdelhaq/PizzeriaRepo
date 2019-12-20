@@ -13,6 +13,9 @@ import ma.gov.interieur.pizzeriabackend.domains.PizzaOrder;
 @Component
 public class PizzaOrderConverter implements
 		VOConverter<PizzaOrder, PizzaOrderVO> {
+	/**
+	 * 
+	 */
 	SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 
 	/*

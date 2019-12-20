@@ -43,7 +43,7 @@ public class PizzaCommandeCtrl {
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/undeliveredOrders", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<PizzaOrderVO>> getNonLivree() {
+	public ResponseEntity<List<PizzaOrderVO>> getUndelivered() {
 		List<PizzaOrderVO> result = pizzaCommandeServ.findBylivreeFalse();
 		return new ResponseEntity<List<PizzaOrderVO>>(result, HttpStatus.OK);
 	}
@@ -75,7 +75,7 @@ public class PizzaCommandeCtrl {
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = "/orders", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<PizzaOrderVO> saveCommande(
+	public ResponseEntity<PizzaOrderVO> saveOrder(
 			@RequestBody PizzaOrderVO pizzaCommande) {
 		PizzaOrderVO inserted = pizzaCommandeServ.saveOrder(pizzaCommande);
 		return new ResponseEntity<PizzaOrderVO>(inserted, new HttpHeaders(),

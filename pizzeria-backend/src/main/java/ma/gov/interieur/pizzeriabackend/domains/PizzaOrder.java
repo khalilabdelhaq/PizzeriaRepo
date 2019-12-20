@@ -16,19 +16,52 @@ import javax.persistence.TemporalType;
  */
 @Entity
 public class PizzaOrder {
+	/**
+	 * 
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	/**
+	 * 
+	 */
 	private String nomClient;
+	/**
+	 * 
+	 */
 	private String prenomClient;
+	/**
+	 * 
+	 */
 	private String adresse;
+	/**
+	 * 
+	 */
 	private String tel;
+	/**
+	 * 
+	 */
 	private String typePizza;
+	/**
+	 * 
+	 */
 	private String taillePizza;
+	/**
+	 * 
+	 */
 	private String saucePizza;
+	/**
+	 * 
+	 */
 	private Integer quantite;
+	/**
+	 * 
+	 */
 	@Column(columnDefinition = "boolean default FALSE")
 	private Boolean livree = false;
+	/**
+	 * 
+	 */
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date orderDate = new Date();
 

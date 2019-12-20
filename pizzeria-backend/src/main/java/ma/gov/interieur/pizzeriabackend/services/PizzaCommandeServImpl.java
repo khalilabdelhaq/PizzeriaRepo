@@ -17,8 +17,14 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class PizzaCommandeServImpl implements PizzaCommandeServ {
+	/**
+	 * 
+	 */
 	@Autowired
 	PizzaCommandeRepo pizzaCommandeRepo;
+	/**
+	 * 
+	 */
 	@Autowired
 	VOConverter<PizzaOrder, PizzaOrderVO> converter;
 
